@@ -362,7 +362,7 @@ orc8r-proxy-64bd4fdb5-rw9nh               1/1     Running   0          X
 Then:
 
 ```bash
-$ kubectl exec -it orc8r-controller-POD-ID bash
+$ kubectl -n magma exec -it orc8r-controller-POD-ID bash
 
 # The following commands are to be run inside the pod
 (pod)$ cd /var/opt/magma/bin
@@ -460,7 +460,7 @@ Wait for the NMS pods (`nms-magmalte`, `nms-nginx-proxy`) to transition into
 
 ```bash
 kubectl exec -it -n magma \
-  $(kubectl get pod -l app.kubernetes.io/component=magmalte -o jsonpath='{.items[0].metadata.name}') -- \
+  $(kubectl -n magma get pod -l app.kubernetes.io/component=magmalte -o jsonpath='{.items[0].metadata.name}') -- \
   yarn setAdminPassword <admin user email> <admin user password>
 ```
 
